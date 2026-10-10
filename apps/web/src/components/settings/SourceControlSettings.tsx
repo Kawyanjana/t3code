@@ -77,7 +77,7 @@ const EMPTY_DISCOVERY_RESULT: SourceControlDiscoveryResult = {
   sourceControlProviders: [],
 };
 
-const SOURCE_CONTROL_PROVIDER_ICONS: Partial<Record<SourceControlProviderKind, Icon>> = {
+const SOURCE_CONTROL_PROVIDER_ICONS: Partial<Record<string, Icon>> = {
   github: GitHubIcon,
   gitlab: GitLabIcon,
   forgejo: ForgejoIcon,

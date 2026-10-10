@@ -1,3 +1,4 @@
+import { SourceControlProviderKind } from "@t3tools/contracts";
 import { assert, it } from "@effect/vitest";
 import * as NodeServices from "@effect/platform-node/NodeServices";
 import * as Effect from "effect/Effect";
@@ -312,31 +313,31 @@ Logged in to gitlab.com as gitlab-user
       })),
       [
         {
-          kind: "github",
+          kind: SourceControlProviderKind.make("github"),
           auth: "authenticated",
           account: Option.some("octocat"),
           detail: Option.none(),
         },
         {
-          kind: "gitlab",
+          kind: SourceControlProviderKind.make("gitlab"),
           auth: "authenticated",
           account: Option.some("gitlab-user"),
           detail: Option.none(),
         },
         {
-          kind: "azure-devops",
+          kind: SourceControlProviderKind.make("azure-devops"),
           auth: "authenticated",
           account: Option.some("azure-user@example.com"),
           detail: Option.none(),
         },
         {
-          kind: "bitbucket",
+          kind: SourceControlProviderKind.make("bitbucket"),
           auth: "authenticated",
           account: Option.some("bitbucket-user"),
           detail: Option.none(),
         },
         {
-          kind: "forgejo",
+          kind: SourceControlProviderKind.make("forgejo"),
           auth: "authenticated",
           account: Option.some("forgejo-user"),
           detail: Option.none(),
@@ -507,7 +508,11 @@ it.effect(
         reference: "42",
         force: true,
         context: {
-          provider: { kind: "forgejo", name: "Forgejo", baseUrl: "https://forgejo.test" },
+          provider: {
+            kind: SourceControlProviderKind.make("forgejo"),
+            name: "Forgejo",
+            baseUrl: "https://forgejo.test",
+          },
           remoteName: "origin",
           remoteUrl: "git@forgejo.test:maria/project.git",
         },
